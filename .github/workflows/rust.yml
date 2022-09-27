@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1
+        uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1
+        uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1
+        uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1
+        uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -133,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1
+        uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -160,7 +160,7 @@ jobs:
           - wasm32-unknown-unknown
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1
+        uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
