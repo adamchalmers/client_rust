@@ -159,6 +159,8 @@ jobs:
           - powerpc64-unknown-linux-gnu
           - wasm32-unknown-unknown
     steps:
+      - name: Confirm OS plat/arch
+        run: uname -a
       - name: Install Protoc
         uses: adamchalmers/setup-protoc@v1.1.5
       - uses: actions/checkout@v2
