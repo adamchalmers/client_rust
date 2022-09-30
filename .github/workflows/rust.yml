@@ -160,8 +160,14 @@ jobs:
           - wasm32-unknown-unknown
         include:
           - target: armv7-unknown-linux-gnueabihf
+            arch: ''
+            features: ''
           - target: mipsel-unknown-linux-gnu
+            arch: ''
+            features: ''
           - target: powerpc-unknown-linux-gnu
+            arch: ''
+            features: ''
           - target: powerpc64-unknown-linux-gnu
             arch: ppc64
             features: --all-features
