@@ -148,7 +148,7 @@ jobs:
           args: --verbose --workspace --no-deps --document-private-items --all-features
 
   cross-compile:
-    name: Cross compile
+    name: Cross compile (with protobuf)
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -158,16 +158,27 @@ jobs:
           - powerpc-unknown-linux-gnu
           - powerpc64-unknown-linux-gnu
           - wasm32-unknown-unknown
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: ${{ matrix.target }}
+          override: true
+      - uses: actions-rs/cargo@v1
+        with:
+          use-cross: true
+          command: build
+          args: --release --target=${{ matrix.target }}
+
+  cross-compile-with-protobuf:
+    name: Cross compile (with protobuf)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - powerpc64-unknown-linux-gnu
         include:
-          - target: armv7-unknown-linux-gnueabihf
-            arch: ''
-            features: ''
-          - target: mipsel-unknown-linux-gnu
-            arch: ''
-            features: ''
-          - target: powerpc-unknown-linux-gnu
-            arch: ''
-            features: ''
           - target: powerpc64-unknown-linux-gnu
             arch: ppc64
             features: --all-features
