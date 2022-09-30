@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1.1.5
+        uses: adamchalmers/setup-protoc@v1.1.6
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1.1.5
+        uses: adamchalmers/setup-protoc@v1.1.6
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1.1.5
+        uses: adamchalmers/setup-protoc@v1.1.6
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -102,7 +102,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1.1.5
+        uses: adamchalmers/setup-protoc@v1.1.6
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -133,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1.1.5
+        uses: adamchalmers/setup-protoc@v1.1.6
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -158,11 +158,20 @@ jobs:
           - powerpc-unknown-linux-gnu
           - powerpc64-unknown-linux-gnu
           - wasm32-unknown-unknown
+        include:
+          - target: armv7-unknown-linux-gnueabihf
+          - target: mipsel-unknown-linux-gnu
+          - target: powerpc-unknown-linux-gnu
+          - target: powerpc64-unknown-linux-gnu
+            arch: ppc64
+            features: --all-features
     steps:
       - name: Confirm OS plat/arch
         run: uname -a
       - name: Install Protoc
-        uses: adamchalmers/setup-protoc@v1.1.5
+        uses: adamchalmers/setup-protoc@v1.1.6
+        with:
+          os-arch: ${{ matrix.arch }}
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
@@ -173,4 +182,4 @@ jobs:
         with:
           use-cross: true
           command: build
-          args: --release --target=${{ matrix.target }} --all-features
+          args: --release --target=${{ matrix.target }} ${{ matrix.features }}
